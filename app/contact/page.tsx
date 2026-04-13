@@ -43,9 +43,17 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Map placeholder */}
-          <div className="bg-beige rounded-2xl h-48 flex items-center justify-center text-gray-400 text-sm">
-            🗺️ Карта — интегрирайте Google Maps тук
+          {/* Google Maps */}
+          <div className="rounded-2xl overflow-hidden shadow-sm">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d94242.95945531742!2d25.5497351!3d42.4257663!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a841ae7cbc8e3d%3A0x5cc9baef2af96761!2z0JrRitGJ0LAg0LfQsCDQs9C-0YHRgtC4ICLQndCw0LrQtdCy0LDRgtCwINC60YrRidCwIg!5e0!3m2!1sen!2sbg!4v1776086485434!5m2!1sen!2sbg"
+              width="100%"
+              height="320"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
 
