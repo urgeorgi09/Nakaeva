@@ -19,10 +19,7 @@ function getBookedDates(bookings: Booking[]): Map<string, Booking[]> {
   const map = new Map<string, Booking[]>()
   for (const b of bookings) {
     if (b.status === 'cancelled') continue
-    const days = eachDayOfInterval({
-      start: parseISO(b.checkIn),
-      end: parseISO(b.checkOut),
-    })
+    const days = eachDayOfInterval({ start: parseISO(b.checkIn), end: parseISO(b.checkOut) })
     for (const day of days) {
       const key = format(day, 'yyyy-MM-dd')
       if (!map.has(key)) map.set(key, [])
@@ -87,7 +84,6 @@ export default function AdminCalendar({ bookings }: { bookings: Booking[] }) {
         tileContent={tileContent}
       />
 
-      {/* Popover */}
       {selected && (
         <div className="bg-white rounded-2xl shadow-lg border border-beige-dark p-5">
           <div className="flex items-center justify-between mb-4">
@@ -116,11 +112,11 @@ export default function AdminCalendar({ bookings }: { bookings: Booking[] }) {
                     <div className="text-sm text-gray-500 space-y-1">
                       <div className="flex items-center gap-2">
                         <CalendarDays size={13} />
-                        {format(parseISO(b.checkIn), 'd MMM', { locale: bg })} → {format(parseISO(b.checkOut), 'd MMM yyyy', { locale: bg })}
+                        {format(parseISO(b.checkIn), 'd MMM', { locale: bg })} &rarr; {format(parseISO(b.checkOut), 'd MMM yyyy', { locale: bg })}
                       </div>
                       <div className="flex items-center gap-2">
                         <Users size={13} />
-                        {b.guests} гости · {b.isWholeHouse ? 'Цяла къща' : room?.name ?? '—'}
+                        {b.guests} гости &middot; {b.isWholeHouse ? 'Цяла къща' : room?.name ?? '—'}
                       </div>
                       <div className="flex items-center gap-2">
                         <Phone size={13} /> {b.guestPhone}
@@ -131,7 +127,7 @@ export default function AdminCalendar({ bookings }: { bookings: Booking[] }) {
                       <div className="font-medium text-green">{b.totalPrice} лв</div>
                     </div>
                     {b.notes && (
-                      <p className="text-xs text-gray-400 italic">„{b.notes}"</p>
+                      <p className="text-xs text-gray-400 italic">{b.notes}</p>
                     )}
                   </div>
                 )
